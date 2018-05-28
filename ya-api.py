@@ -5,7 +5,7 @@ import re
 wb = Workbook()
 ws = wb.active
 pattern = r'89[0-9]{9}'  # поиск мобильных номеров
-api_key = "&type=biz&lang=ru_RU&apikey=f45946ec-bc30-458c-bba1-5ebd22b0b970"
+api_key = "f45946ec-bc30-458c-bba1-5ebd22b0b970"
 
 # Считываем лог астериска
 Dubli = list()
@@ -28,7 +28,7 @@ for i in range(len(numbers)):
     zvonki.append(Dubli.count(numbers[i]))  # Количество звонков за день
     if re.match(pattern, numbers[i]) is None:
         number = str(numbers[i])
-        api_url = "https://search-maps.yandex.ru/v1/?text=" + number + api_key
+        api_url = "https://search-maps.yandex.ru/v1/?text=" + number + "&type=biz&lang=ru_RU&apikey=" + api_key
         res = requests.get(api_url)
         tabs = res.json()
 
